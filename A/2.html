@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+	<head>
+		<title>Set A: 1</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+				width: 100%;
+				background: #9FA8DA;
+				margin: 0;
+				padding: 0;
+			}
+			#container {	
+				width: 100%;
+				min-height: 100%;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-around;
+				align-content: space-around;
+			}
+			#container span {
+				background: #fff;
+				text-align: center;
+				line-height: 200px;
+				height: 200px;
+				margin: 5px;
+				font-size: 3em;
+			}
+			@media all and (max-width: 400px)
+			{
+				#container span {
+					width: 90vw;
+				}
+			}
+			@media all and (min-width: 400px) and (max-width: 800px)
+			{
+				#container span {
+					width: 45vw;
+				}
+				#container span:nth-child(4n+2) {
+					opacity: 0;
+				}
+				#container span:nth-child(4n+3) {
+					opacity: 0;
+				}
+			}
+			@media all and (min-width: 800px) and (max-width: 1200px)
+			{
+				#container span {
+					width: 30vw;
+				}
+				#container span:nth-child(6n+3) {
+					opacity: 0;
+				}
+				#container span:nth-child(6n+4) {
+					opacity: 0;
+				}
+			}
+			@media all and (min-width: 1200px)
+			{
+				#container span {
+					width: 22.5vw;
+				}
+				#container span:nth-child(8n+4) {
+					opacity: 0;
+				}
+				#container span:nth-child(8n+5) {
+					opacity: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<span class="b1">A</span>
+			<span class="b2">B</span>
+			<span class="b3">C</span>
+			<span class="b4">D</span>
+			<span class="b5">E</span>
+			<span class="b6">F</span>
+			<span class="b7">G</span>
+			<span class="b8">H</span>
+			<span class="b9">I</span>
+			<span class="b10">J</span>
+			<span class="b11">K</span>
+			<span class="b12">L</span>
+		</div>
+	</body>
+</html>

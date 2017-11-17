@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+	<head>
+		<title>Set A: 1</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+				width: 100%;
+				background: #9FA8DA;
+				margin: 0;
+				padding: 0;
+			}
+			#container {	
+				width: 100%;
+				min-height: 100%;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-around;
+				align-content: space-around;
+			}
+			#container span {
+				background: #fff;
+				text-align: center;
+				line-height: 200px;
+				height: 200px;
+				margin: 5px;
+				font-size: 3em;
+			}
+			@media all and (max-width: 600px)
+			{
+				#container span {
+					width: 90vw;
+				}
+			}
+			@media all and (min-width: 600px) and (max-width: 900px)
+			{
+				#container span {
+					width: 45vw;
+				}
+			}
+			@media all and (min-width: 900px) and (max-width: 1200px)
+			{
+				#container span {
+					width: 30vw;
+				}
+			}
+			@media all and (min-width: 1200px)
+			{
+				#container span {
+					width: 22.5vw;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<span class="b">A</span>
+			<span class="b">B</span>
+			<span class="b">C</span>
+			<span class="b">D</span>
+			<span class="b">E</span>
+			<span class="b">F</span>
+			<span class="b">G</span>
+			<span class="b">H</span>
+			<span class="b">I</span>
+			<span class="b">J</span>
+			<span class="b">K</span>
+			<span class="b">L</span>
+		</div>
+	</body>
+</html>

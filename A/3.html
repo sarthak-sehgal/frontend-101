@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+	<head>
+		<title>Set A: 1</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+				width: 100%;
+				background: #9FA8DA;
+				margin: 0;
+				padding: 0;
+			}
+			#container {	
+				width: 100%;
+				min-height: 100%;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-around;
+				align-content: space-around;
+				overflow-x: hidden;
+			}
+			#container span {
+				background: #fff;
+				text-align: center;
+				line-height: 200px;
+				height: 200px;
+				margin: 5px 1vw 5px 1vw;
+				font-size: 3em;
+			}
+			@media all and (max-width: 400px)
+			{
+				#container span {
+					width: 90vw;
+				}
+			}
+			@media all and (min-width: 400px) and (max-width: 800px)
+			{
+				#container span {
+					width: 45vw;
+				}
+				#container span:nth-child(4n+2) {
+					opacity: 0;
+				}
+				#container span:nth-child(4n+3) {
+					opacity: 0;
+				}
+				#container span:nth-child(4n+1) {
+					animation: toRight 1.5s alternate infinite;
+				}
+				@keyframes toRight {
+					100% {
+						transform: translateX(52vw);
+					}
+				}
+				#container span:nth-child(4n+4) {
+					animation: toLeft 1.5s alternate infinite;
+				}
+				@keyframes toLeft {
+					100% {
+						transform: translateX(-52vw);
+					}
+				}
+			}
+			@media all and (min-width: 800px) and (max-width: 1200px)
+			{
+				#container span {
+					width: 30vw;
+				}
+				#container span:nth-child(6n+3) {
+					opacity: 0;
+				}
+				#container span:nth-child(6n+4) {
+					opacity: 0;
+				}
+				#container span:nth-child(n+1):nth-child(-n+3), #container span:nth-child(n+7):nth-child(-n+9) {
+					animation: toRight 2s alternate infinite;
+				}
+				@keyframes toRight {
+					100% {
+						transform: translateX(34vw);
+					}
+				}
+				#container span:nth-child(n+4):nth-child(-n+6), #container span:nth-child(n+10):nth-child(-n+12) {
+					animation: toLeft 2s alternate infinite;
+				}
+				@keyframes toLeft {
+					100% {
+						transform: translateX(-34vw);
+					}
+				}
+			}
+			@media all and (min-width: 1200px)
+			{
+				#container span {
+					width: 22.5vw;
+				}
+				#container span:nth-child(8n+4) {
+					opacity: 0;
+				}
+				#container span:nth-child(8n+5) {
+					opacity: 0;
+				}
+				#container span:nth-child(n+1):nth-child(-n+4), #container span:nth-child(n+9):nth-child(-n+12) {
+					animation: toRight 2s alternate infinite;
+				}
+				@keyframes toRight {
+					100% {
+						transform: translateX(25.5vw);
+					}
+				}
+				#container span:nth-child(n+5):nth-child(-n+8) {
+					animation: toLeft 2s alternate infinite;
+				}
+				@keyframes toLeft {
+					100% {
+						transform: translateX(-25.5vw);
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<span class="b1">A</span>
+			<span class="b2">B</span>
+			<span class="b3">C</span>
+			<span class="b4">D</span>
+			<span class="b5">E</span>
+			<span class="b6">F</span>
+			<span class="b7">G</span>
+			<span class="b8">H</span>
+			<span class="b9">I</span>
+			<span class="b10">J</span>
+			<span class="b11">K</span>
+			<span class="b12">L</span>
+		</div>
+	</body>
+</html>
