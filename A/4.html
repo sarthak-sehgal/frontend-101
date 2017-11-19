@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Set A: 4</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+		html, body {
+			margin: 0;
+			padding: 0;
+			font-family: "Open Sans", sans-serif;
+		}
+		nav {
+			width: 100%;
+			background: #c10681;
+			height: 50px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+		nav img {
+			padding: 10px 0 10px 20px ;
+			height: 30px;
+			cursor: pointer;
+		}
+		ul {
+			color: #fff;
+			height: 100%;
+			display: flex;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		ul li {
+			height: 50px;
+			display: inline-flex;
+			align-items: center;
+			padding: 0px 3vw 0 3vw;
+			margin: 0;
+			cursor: pointer;
+			font-size: 20px;
+			-webkit-transition: 1s all ease-in-out;
+			-moz-transition: 1s all ease-in-out;
+			-o-transition: 1s all ease-in-out;
+			transition: 1s all ease-in-out;
+		}
+		ul li:hover {
+			background-color: #9a0166;
+		}
+		@media all and (max-width: 500px) {
+			ul {
+				display: block;
+				position: fixed;
+				left: -100vw;
+				top: 50px;
+				height: 100vh;
+				background-color: #c10681;
+				flex-direction: column;
+				width: 100vw;
+				-webkit-transition: 0.2s all ease-in-out;
+				-moz-transition: 0.2s all ease-in-out;
+				-o-transition: 0.2s all ease-in-out;
+				transition: 0.2s all ease-in-out;
+			}
+			ul li {
+				display: flex;
+				font-size: 25px;
+				padding-bottom: 2vh;
+				padding-top: 2vh;
+			}
+			nav {
+				justify-content: center;
+				z-index: 999;
+			}
+			nav img {
+			}
+			.hamburger {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				float: left;;
+				width: 30px;
+				height: 30px;
+				cursor: pointer;
+			}
+			.hamburger span {
+				display: block;
+				height: 3px;
+				width: 30px;
+				background-color: #fff;
+				margin: 5px 0 5px 0;
+				transition: 0.5s all ease-in-out;
+			}
+			.onclick span:nth-child(2) {
+				opacity: 0;
+			}
+			.onclick span:nth-child(1) {
+				transform: rotate(40deg) translateY(10px);
+			}
+			.onclick span:nth-child(3) {
+				transform: rotate(-40deg) translateY(-10px);	
+			}
+		}
+ 	</style>
+</head>
+<body>
+		<div class="hamburger" onclick="toggle()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	<nav>
+		<img src="logo.png" />
+		<ul>
+			<li>Link</li>
+			<li>Link</li>
+			<li>Link</li>
+			<li>Link</li>
+		</div>
+	</nav>
+	<script type="text/javascript">
+		var hamburger = document.getElementsByClassName("hamburger")[0];
+		var span = document.getElementsByTagName("span");
+		var navList = document.getElementsByTagName("nav")[0].getElementsByTagName("ul")[0];
+		function toggle() {
+			if(span[1].style.opacity=="0")
+			{
+				span[1].style.opacity = 1;
+				span[0].style.transform = "rotate(0) translateY(0)";
+				span[2].style.transform = "rotate(0) translateY(0)";
+				navList.style.left="-100vw";
+			}
+			else
+			{
+				span[1].style.opacity = 0;
+				span[0].style.transform = "translateY(8.5px) rotate(45deg)";
+				span[2].style.transform = "translateY(-8.5px) rotate(-45deg)";
+				navList.style.left = "0";
+			}
+		}
+	</script>
+</body>
+</html>
