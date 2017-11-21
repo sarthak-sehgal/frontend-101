@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Set A: 6</title>
+	<style type="text/css">
+		html, body {
+			overflow: hidden;
+			background-color: #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+    		width: 100%;
+		}
+	  .d_line {
+	  	stroke-dasharray: 1155;
+	  	animation: d_animate 1.5s cubic-bezier(.63,0,1,.57) forwards;
+	  }
+	  .v_line {
+		stroke-dasharray: 840;
+	  	stroke-dashoffset: 840;
+	  	animation: v_animate 1.5s cubic-bezier(.63,0,1,.57) forwards;
+	  	animation-delay: 0.5s;
+	  }
+	  .m_line {
+		stroke-dasharray: 770;
+	  	stroke-dashoffset: 770;
+	  	animation: m_animate 1.5s cubic-bezier(.63,0,1,.57) forwards;
+	  	animation-delay: 0.75s;
+	  }
+	  @keyframes d_animate {
+	  	0% {
+	  		stroke-dashoffset: -1155;
+	  	}
+	  	70% {
+	  	}
+	  	100% {
+	  		stroke-dashoffset: 0;
+	  	}
+	  }
+	  @keyframes v_animate {
+	  	0% {
+	  		stroke-dashoffset: -840;
+	  		fill: #000;
+	  	}
+	  	70% {
+	  		fill: #000;
+	  	}
+	  	100% {
+	  		stroke-dashoffset: 0;
+	  		fill: #EB186D;
+	  	}
+	  }
+	  @keyframes m_animate {
+	  	0% {
+	  		stroke-dashoffset: -770;
+	  		fill: #000;
+	  	}
+	  	70% {
+	  		fill: #000;
+	  	}
+	  	100% {
+	  		stroke-dashoffset: 0;
+	  		fill: #fff;
+	  	}
+	  }
+	  .dfill {
+	  	animation: d_fill 0.5s ease-in-out forwards;
+	  	animation-delay: 1.5s;	
+	  }
+	  .vfill {
+	  	animation: v_fill 0.5s ease-in-out forwards;
+	  	animation-delay: 2s;	
+	  }
+	  .mfill {
+	  	animation: m_fill 0.5s ease-in-out forwards;
+	  	animation-delay: 2.25s;	
+	  }
+	  @keyframes d_fill {
+	  	0% {
+	  		fill: #000;
+	  	}
+	  	100% {
+	  		fill: #fff;
+	  	}
+	  }
+	  @keyframes v_fill {
+	  	0% {
+	  		fill: #000;
+	  	}
+	  	100% {
+	  		fill: #EB186D;
+	  	}
+	  }
+	  @keyframes m_fill {
+	  	0% {
+	  		fill: #000;
+	  	}
+	  	100% {
+	  		fill: #fff;
+	  	}
+	  }
+	</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="670" height="700" viewBox="0 0 670 700">
+    <rect x="" y="" width="670" height="700"/>
+        <polygon points="164.33 155.67 277 311 277 359 192.3 243.7 192.3 459.7 231 425 245.7 449 164.3 521.7" stroke="#FFFFFF" stroke-width="3" class="d_line"/>
+        <polygon points="192.3 243.7 192.3 459.7 231 425 245.7 449 164.3 521.7 164.3 155.7 277 311 277 359" class="dfill"/>
+        <polygon points=" 238.3 348.3 306 433.7 419.7 263 419.7 311 306 488.3 238.3 396" stroke="#ED156D" stroke-width="3" class="v_line"/>
+        <polygon points="419.7 263 419.7 311 306 488.3 238.3 396 238.3 348.3 306 433.7" class="vfill"/>
+        <polygon points="435 190.3 465.7 151.7 465.7 521.7 435 495" stroke="#FFFFFF" stroke-width="3" class="m_line"/>
+        <polygon points="465.7 151.7 465.7 521.7 435 495 435 190.3 " class="mfill"/>
+</svg>
+	<script type="text/javascript">
+		// var path1 = document.querySelector('.m_line');
+		// var length1 = path1.getTotalLength();
+		// console.log(length1);
+	</script>
+</body>
+</html>

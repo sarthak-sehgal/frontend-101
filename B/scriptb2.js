@@ -35,13 +35,15 @@ function drawClock()
 	ctx.beginPath();
 	ctx.lineWidth=3;
 	
+	//get date object
 	var time = new Date();
+	
 	//animate hour clock dial
 	ctx.save();
 	ctx.translate(clockX, clockY);
 	ctx.rotate(Math.PI/180 * ((time.getHours()%12)*30 + (time.getMinutes())/2) - Math.PI);
 	ctx.strokeStyle="#000";
-	ctx.rect(0, 0, 3, radius-20);
+	ctx.rect(0, 0, 3, radius/2);
 	ctx.stroke();
 	ctx.restore();
 	
@@ -50,7 +52,7 @@ function drawClock()
 	ctx.translate(clockX, clockY);
 	ctx.rotate(Math.PI/180 * ((time.getMinutes())*6) - Math.PI);
 	ctx.strokeStyle="#000";
-	ctx.rect(0, 0, 3, radius-20);
+	ctx.rect(0, 0, 3, radius/1.5);
 	ctx.stroke();
 	ctx.restore();
 
