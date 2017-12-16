@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>B1</title>
 <style type="text/css">
 	html, body {
@@ -9,8 +10,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-flow: row wrap;
+		margin: 0;
+		padding: 0;
 	}
 	.btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 4vw;
 		margin: 0 2vw 0 2vw;
 		padding: 1vw;
@@ -18,18 +25,73 @@
 		color: #fff;
 		text-align: center;
 		border: 1px solid #000;
+		font-size: 1vw;
+		min-height: 3vw;
+	}
+	.clicked {
+		background: #000;
+		border: 1px solid red;
 	}
 </style>
 </head>
 <body>
-	<div class="btn">A<br></div>
-	<div class="btn">S<br></div>
-	<div class="btn">D</div>
-	<div class="btn">F</div>
-	<div class="btn">G</div>
-	<div class="btn">H</div>
-	<div class="btn">J</div>
-	<div class="btn">K</div>
-	<div class="btn">L</div>
+	<audio id="audio65">
+		<source src="./sounds/beep.wav" type="audio/wav">	
+	</audio>
+	<audio id="audio83">
+		<source src="./sounds/fart.wav" type="audio/wav">
+	</audio>
+	<audio id="audio68">
+		<source src="./sounds/fire_bow.wav" type="audio/wav">	
+	</audio>
+	<audio id="audio70">
+		<source src="./sounds/fire_cracker.wav" type="audio/wav">	
+	</audio>
+	<audio id="audio71">
+		<source src="./sounds/kid_laugh.wav" type="audio/wav">	
+	</audio>
+	<audio id="audio72">
+		<source src="./sounds/moo.wav" type="audio/wav">	
+	</audio>
+	<audio id="audio74">
+		<source src="./sounds/owl.wav" type="audio/wav">	
+	</audio>
+	<audio id="audio75">
+		<source src="./sounds/pew.wav" type="audio/wav">	
+	</audio>
+	<audio id="audio76">
+		<source src="./sounds/smg.wav" type="audio/wav">	
+	</audio>
+	<div class="btn 65">A<br>BEEP</div>
+	<div class="btn 83">S<br>FART</div>
+	<div class="btn 68">D<br>BOW</div>
+	<div class="btn 70">F<br>CRACK</div>
+	<div class="btn 71">G<br>LAUGH</div>
+	<div class="btn 72">H<br>MOO</div>
+	<div class="btn 74">J<br>OWL</div>
+	<div class="btn 75">K<br>PEW</div>
+	<div class="btn 76">L<br>SMG</div>
 </body>
+<script type="text/javascript">
+	document.addEventListener("keydown", keyDownFunc);
+	document.addEventListener("keyup", keyUpFunc);
+	function keyDownFunc(e) {
+		if(e.keyCode==65 || e.keyCode==83  || e.keyCode==68 || e.keyCode==70 || e.keyCode==71 || e.keyCode==72 || e.keyCode==74 || e.keyCode==75 || e.keyCode==76)
+		{
+			var i=e.keyCode;
+			var x=document.getElementById("audio"+i);
+			x.play();
+			var y=document.getElementsByClassName("btn "+i)[0];
+			y.classList.add("clicked");
+		}
+	}
+	function keyUpFunc(e) {
+		if(e.keyCode==65 || e.keyCode==83  || e.keyCode==68 || e.keyCode==70 || e.keyCode==71 || e.keyCode==72 || e.keyCode==74 || e.keyCode==75 || e.keyCode==76)
+		{
+			var i=e.keyCode;
+			var y=document.getElementsByClassName("btn "+i)[0];
+			y.className="btn "+i;
+		}
+	}
+</script>
 </html>
