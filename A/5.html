@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"> 
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	@import "compass/css3";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn {
+  perspective: 200px;
+  height: 50px;
+  width: 100px;
+  transform-style: preserve-3d;
+  transform-origin: 0 50%;
+  transform: rotateY(-30deg);
+}
+.btn-2 {
+  perspective-origin: 200px -50px;
+  perspective: 200px;
+  height: 50px;
+  width: 100px;
+  transform-style: preserve-3d;
+  margin-left: 100px;
+  /*transform-origin: 50% 50%;*/
+}
+.side {
+  /*box-sizing: border-box;*/
+  height: 46px;
+  transform: ;
+  background: red;
+  color: #fff;
+  text-align: center;
+  line-height: 46px;
+  position: absolute;
+  border: 2px solid #000;
+  transition: transform 0.1s ease-in-out;
+}
+.s1 {
+  width: 96px;
+  font-size: 25px;
+  transform-origin: 0 0;
+  transform: rotateY(-20deg);
+  cursor: pointer;
+}
+.s2 {
+  width: 46px;
+  left: 25px;
+  transform-origin: 0 0;
+  transform: translateX(68px) translateZ(35px) rotateY(70deg);
+}
+.s1:hover {
+  transform: rotateY(0deg);
+}
+.s1:hover + .s2 {
+  transform-origin: 0 0; 
+  transform: translateX(65px) translateZ(-25px) rotateY(115deg);
+}
+.front {
+  z-index: 999;
+  width: 96px;
+  cursor: pointer;
+}
+.right, .left {
+  width: 46px;
+}
+.top, .bottom {
+  width: 96px;
+}
+.right {
+  transform-origin: 0 50%;
+  transform: translateX(98px) rotateY(90deg);
+}
+.left {
+  transform-origin: 100% 50%;
+  transform: translateX(-48px) rotateY(-90deg);
+}
+.bottom {
+  transform-origin: 50% 0;
+  transform: translateY(48px) rotateX(-90deg);
+}
+.top {
+  transform-origin: 50% 100%;
+  transform: translateY(-48px) rotateX(90deg);
+}
+.front:hover {
+  transform: translateZ(0px);
+}
+.front:hover + div > .right {
+  transform: translateZ(0px) translateX(98px) rotateY(0deg) ;
+}
+.front:hover + div > .top {
+  transform: translateZ(0px) translateY(-48px) rotateX(0deg);
+}
+.front:hover + div > .bottom {
+  transform: translateZ(0px) translateY(48px) rotateX(0deg);
+}
+.front:hover + div > .left {
+  transform: translateZ(0px) translateX(-48px) rotateX(0deg);
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="btn">
+  		<div class="side s1">Button</div>
+  		<div class="side s2"></div>
+  </div>
+  <div class="btn-2">
+      <div class="side front">Button</div>
+      <div>
+        <div class="side top"></div>
+        <div class="side right"></div>
+        <div class="side left"></div>
+        <div class="side bottom"></div>
+      </div>
+  </div>
+</div>
+</body>
+</html>
