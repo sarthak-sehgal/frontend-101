@@ -14,8 +14,6 @@
 	function keypressfunc(e) {
 		caps = isCapslock(e);	
 		function isCapslock(e){
-		    e = (e) ? e : window.event;
-
 		    var charCode = false;
 		    if (e.which) {
 		        charCode = e.which;
@@ -26,8 +24,6 @@
 		    var shifton = false;
 		    if (e.shiftKey) {
 		        shifton = e.shiftKey;
-		    } else if (e.modifiers) {
-		        shifton = !!(e.modifiers & 4);
 		    }
 
 		    if (charCode >= 97 && charCode <= 122 && shifton) {
@@ -41,6 +37,7 @@
 	}
 	function keyupfunc(e)
 	{
+		capital=0;
 		if(caps || e.shiftKey)
 		{
 			if(caps && e.shiftKey)
