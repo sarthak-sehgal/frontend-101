@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>B3</title>
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: yellow;
+		}
+		ul {
+			border-radius: 3px;
+			list-style: none;
+			background: #fff;
+			text-align: left;
+			padding: 0;
+			margin: 0;
+			box-shadow: 8px 8px 10px 0px #696969;
+		}
+		ul li {
+			border-bottom: 1px solid #000;
+			padding: 10px 300px 10px 0px;
+		}
+	</style>
+</head>
+<body>
+		<ul>
+			<li>
+				<input type="checkbox" onclick="getLatest(this.id)" name="c1" id="c1" />
+				<label for="c1">1</label>
+			</li>
+			<li>
+				<input type="checkbox" onclick="getLatest(this.id)" name="c2" id="c2" />
+				<label for="c1">2</label>
+			</li>
+			<li>
+				<input type="checkbox" onclick="getLatest(this.id)" name="c3" id="c3" />
+				<label for="c1">3</label>
+			</li>
+			<li>
+				<input type="checkbox" onclick="getLatest(this.id)" name="c4" id="c4" />
+				<label for="c1">4</label>
+			</li>
+			<li>
+				<input type="checkbox" onclick="getLatest(this.id)" name="c5" id="c5" />
+				<label for="c1">5</label>
+			</li>
+			<li>
+				<input type="checkbox" onclick="getLatest(this.id)" name="c6" id="c6" />
+				<label for="c1">6</label>
+			</li>
+		</ul>
+</body>
+<script type="text/javascript">
+	document.addEventListener("keydown", keydownfunc);
+	document.addEventListener("keyup", keyupfunc);
+	var shift=0;
+	var list = new Array();
+	function keydownfunc(e) {
+		if(e.keyCode==16)
+		{
+			shift=1;
+		}
+	}
+	function keyupfunc(e) {
+		if(e.keyCode==16)
+		{
+			shift=0;
+		}
+	}
+	function getLatest(id) {
+		if(document.getElementById(id).checked==true)
+		{
+			if(shift==1)
+			{
+				last=list[list.length-1];
+				if(id>last)
+				{
+					id_dig = parseInt(id.replace ( /[^\d.]/g, ''), 10);
+					last_dig = parseInt(last.replace ( /[^\d.]/g, ''), 10);
+					for(j=last_dig+1; j<id_dig; j++)
+					{
+						for(var i = list.length - 1; i >= 0; i--) 
+						{
+						    if(list[i] == "c"+j) {
+						       list.splice(i, 1);
+						       break;
+						    }
+						}
+						document.getElementById("c"+j).checked=true;
+						list.push("c"+j);
+					}
+				}
+				else if(id<last)
+				{
+					id_dig = parseInt(id.replace ( /[^\d.]/g, ''), 10);
+					last_dig = parseInt(last.replace ( /[^\d.]/g, ''), 10);
+					for(j=last_dig-1; j>id_dig; j--)
+					{
+						for(var i = list.length - 1; i >= 0; i--) 
+						{
+						    if(list[i] == "c"+j) {
+						       list.splice(i, 1);
+						       break;
+						    }
+						}
+						document.getElementById("c"+j).checked=true;
+						list.push("c"+j);
+					}
+				}
+			}
+			list.push(id);
+		}
+		else
+		{
+			for(var i = list.length - 1; i >= 0; i--) 
+			{
+			    if(list[i] == id) {
+			       list.splice(i, 1);
+			       break;
+			    }
+			}
+		}
+	}
+</script>
+</html>
