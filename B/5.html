@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewprot" content="width=device-width, initial-scale=1.0">
+	<title>B5</title>
+	<style type="text/css">
+		div {
+			display: block;
+			float: left;
+			width: 210px;
+			height: 210px;
+			position: relative;
+		}
+		div:nth-child(odd) {
+			float: right;
+		}
+		div:after {
+			content: '';
+			clear: both;
+		}
+		img {
+			opacity: 0;
+			position: absolute;
+			margin: 5px;
+		}
+		.fromleft {
+			animation: fromleft 0.5s forwards;
+		}
+		.fromright {
+			animation: fromright 0.5s forwards;
+		}
+		@keyframes fromleft {
+			0% {
+				left: -100px;
+				opacity: 0;
+			}
+			100% {
+				left: 0px;
+				opacity: 1;
+			}
+		}
+		@keyframes fromright {
+			0% {
+				right: -100px;
+				opacity: 0;
+			}
+			100% {
+				right: 0px;
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac rutrum elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin luctus pharetra rutrum. Ut vitae tellus sodales, pellentesque tellus et, convallis magna. Nullam non nisi augue. <div><img id="img1" src="placeholder.png"></div>Suspendisse fermentum enim nec tempor vestibulum. Aliquam et justo vitae urna blandit dictum. Aenean at egestas arcu. Etiam vulputate faucibus mollis.
+<br>
+Etiam mi leo, bibendum a suscipit nec, ultricies eget massa. Maecenas non arcu rhoncus, euismod nunc ut, ornare diam. Vestibulum rhoncus dapibus aliquet. Curabitur rhoncus risus nulla, et blandit mi pulvinar eu. Vestibulum lacinia hendrerit gravida. Mauris iaculis scelerisque massa vel suscipit. Pellentesque enim velit, vestibulum ut diam ac, sodales posuere felis. Cras ac dignissim felis. Phasellus vestibulum lacus vel urna accumsan, ac tempor elit ultricies. Nam bibendum purus metus, porttitor facilisis tortor pretium a. Proin ultricies egestas facilisis. Ut fringilla ipsum dolor, quis lacinia felis scelerisque ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris quis nisi finibus, elementum libero et, interdum metus. Aenean vitae justo feugiat, ultricies eros ac, tincidunt orci.
+<br>
+Aliquam facilisis urna a magna viverra facilisis. Nullam non justo tellus. Proin finibus ex odio, vel rutrum ligula maximus ac. Phasellus lorem neque, tempus ac bibendum id, dictum quis libero. Nunc at enim quam. Nunc tincidunt eleifend nisl, in porttitor ante efficitur vel. Nunc blandit dui id arcu molestie, eget varius justo laoreet. <div><img src="placeholder.png" /></div>Pellentesque nibh nulla, maximus eget faucibus sit amet, porttitor at odio. Quisque neque massa, mattis eu enim id, ultricies aliquet eros. Nam laoreet, elit non semper placerat, nibh lacus vestibulum massa, sit amet pulvinar velit augue a magna. Cras lacinia sit amet urna quis maximus. Suspendisse fermentum libero a sem aliquam dapibus. Vestibulum ac mauris nibh. In fringilla imperdiet tristique.
+<br>
+Fusce dolor dui, volutpat ut magna vitae, consectetur scelerisque purus. Nulla at vulputate neque, at pulvinar felis. Quisque eleifend, nibh quis consectetur venenatis, augue nisi ullamcorper libero, eget interdum lorem ante cursus sapien. Sed rutrum nunc a orci fringilla, eu lacinia nisi varius. Phasellus malesuada fringilla quam, ut tempor ligula ornare in. Nunc in varius orci, elementum lacinia ante. Pellentesque malesuada nibh id massa accumsan posuere. Cras scelerisque sollicitudin purus eu porta. In posuere, risus non posuere gravida, elit leo tristique felis, ac condimentum dui lacus eget elit. Proin lobortis ligula mi, ut condimentum erat dignissim vitae.
+<br>
+Suspendisse laoreet sed nisi eget varius. Aenean tortor sapien, suscipit in hendrerit id, semper vitae lorem. Integer molestie metus vel tellus ornare semper. Morbi massa metus, aliquet eu nunc vestibulum, hendrerit mattis dolor. Duis eu orci auctor, convallis neque sed, viverra libero. Etiam in dui fermentum ex mattis rhoncus quis ac elit. <div><img src="placeholder.png" /></div>Morbi lorem mi, tincidunt sit amet faucibus et, euismod at neque. Pellentesque vulputate lectus lacinia quam fermentum bibendum. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac rutrum elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin luctus pharetra rutrum. Ut vitae tellus sodales, pellentesque tellus et, convallis magna. Nullam non nisi augue. Suspendisse fermentum enim nec tempor vestibulum. Aliquam et justo vitae urna blandit dictum. Aenean at egestas arcu. Etiam vulputate faucibus mollis.
+<br>
+Etiam mi leo, bibendum a suscipit nec, ultricies eget massa. Maecenas non arcu rhoncus, euismod nunc ut, ornare diam. Vestibulum rhoncus dapibus aliquet. Curabitur rhoncus risus nulla, et blandit mi pulvinar eu. Vestibulum lacinia hendrerit gravida. Mauris iaculis scelerisque massa vel suscipit. Pellentesque enim velit, vestibulum ut diam ac, sodales posuere felis. Cras ac dignissim felis. Phasellus vestibulum lacus vel urna accumsan, ac tempor elit ultricies. Nam bibendum purus metus, porttitor facilisis tortor pretium a. Proin ultricies egestas facilisis. Ut fringilla ipsum dolor, quis lacinia felis scelerisque ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris quis nisi finibus, elementum libero et, interdum metus. Aenean vitae justo feugiat, ultricies eros ac, tincidunt orci.
+<br>
+Aliquam facilisis urna a magna viverra facilisis. Nullam non justo tellus. Proin finibus ex odio, vel rutrum ligula maximus ac. Phasellus lorem neque, tempus ac bibendum id, dictum quis libero. Nunc at enim quam. Nunc tincidunt eleifend nisl, in porttitor ante efficitur vel. Nunc blandit dui id arcu molestie, eget varius justo laoreet. <div><img src="placeholder.png" /></div>Pellentesque nibh nulla, maximus eget faucibus sit amet, porttitor at odio. Quisque neque massa, mattis eu enim id, ultricies aliquet eros. Nam laoreet, elit non semper placerat, nibh lacus vestibulum massa, sit amet pulvinar velit augue a magna. Cras lacinia sit amet urna quis maximus. Suspendisse fermentum libero a sem aliquam dapibus. Vestibulum ac mauris nibh. In fringilla imperdiet tristique.
+<br>
+Fusce dolor dui, volutpat ut magna vitae, consectetur scelerisque purus. Nulla at vulputate neque, at pulvinar felis. Quisque eleifend, nibh quis consectetur venenatis, augue nisi ullamcorper libero, eget interdum lorem ante cursus sapien. Sed rutrum nunc a orci fringilla, eu lacinia nisi varius. Phasellus malesuada fringilla quam, ut tempor ligula ornare in. Nunc in varius orci, elementum lacinia ante. Pellentesque malesuada nibh id massa accumsan posuere. Cras scelerisque sollicitudin purus eu porta. In posuere, risus non posuere gravida, elit leo tristique felis, ac condimentum dui lacus eget elit. Proin lobortis ligula mi, ut condimentum erat dignissim vitae.
+<br>
+Suspendisse laoreet sed nisi eget varius. Aenean tortor sapien, suscipit in hendrerit id, semper vitae lorem. Integer molestie metus vel tellus ornare semper. Morbi massa <div><img src="placeholder.png" /></div>metus, aliquet eu nunc vestibulum, hendrerit mattis dolor. Duis eu orci auctor, convallis neque sed, viverra libero. Etiam in dui fermentum ex mattis rhoncus quis ac elit. Morbi lorem mi, tincidunt sit amet faucibus et, euismod at neque. Pellentesque vulputate lectus lacinia quam fermentum bibendum. 
+</p>
+<script type="text/javascript">
+	setInterval(onScroll, 100);
+	function onScroll() 
+	{
+		var elements=document.getElementsByTagName('img');
+		var height=document.documentElement.clientHeight;
+		for(i=0; i<elements.length; i++)
+		{
+			if((height + document.documentElement.scrollTop)>getPos(elements[i]))
+			{
+				if(i%2==0)
+				{
+					elements[i].classList.add("fromleft");
+				}
+				else
+				{
+					elements[i].classList.add("fromright");
+				}
+			}
+		}
+
+		function getPos(el) {
+		    for (var ly=0; el != null; ly += el.offsetTop, el = el.offsetParent);
+		    return ly;
+		}
+	}
+</script>
+</body>
+</html>
