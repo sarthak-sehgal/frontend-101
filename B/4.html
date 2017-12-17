@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>B4</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var capital=0, caps=0;
+	document.addEventListener("keyup", keyupfunc);
+	document.addEventListener("keypress", keypressfunc);
+	
+	function keypressfunc(e) {
+		caps = isCapslock(e);	
+		function isCapslock(e){
+		    e = (e) ? e : window.event;
+
+		    var charCode = false;
+		    if (e.which) {
+		        charCode = e.which;
+		    } else if (e.keyCode) {
+		        charCode = e.keyCode;
+		    }
+
+		    var shifton = false;
+		    if (e.shiftKey) {
+		        shifton = e.shiftKey;
+		    } else if (e.modifiers) {
+		        shifton = !!(e.modifiers & 4);
+		    }
+
+		    if (charCode >= 97 && charCode <= 122 && shifton) {
+		        return true;
+		    }
+		    if (charCode >= 65 && charCode <= 90 && !shifton) {
+		        return true;
+		    }
+		    return false;
+		}
+	}
+	function keyupfunc(e)
+	{
+		if(caps || e.shiftKey)
+		{
+			if(caps && e.shiftKey)
+			{
+				capital=0;
+			}
+			else
+			{
+				capital=1;
+			}
+		}
+		if (capital)
+		{
+			if(e.keyCode==68)
+			{
+				d=true;
+				v=false;
+				m=false;
+			}
+			else if(e.keyCode==86)
+			{
+				v=true;
+				m=false;
+			}
+			else if(e.keyCode==77)
+			{
+				m=true;
+				if(d && v && m)
+				{
+					document.body.innerHTML+="Front-End development in fun.<br>";
+				}
+				d=false;
+				v=false;
+				m=false;
+			}
+			else if(e.keyCode!=16)
+			{
+				d=false;
+				v=false;
+				m=false;
+			}
+		}
+	}
+</script>
+</html>
