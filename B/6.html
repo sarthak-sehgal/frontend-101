@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>B6</title>
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: yellow;
+		}
+		div {
+			border-radius: 3px;
+			background: #fff;
+			text-align: left;
+			padding: 0;
+			margin: 0;
+			box-shadow: 8px 8px 10px 0px #696969;
+			padding: 30px;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			text-align: left;
+			list-style: none;
+		}
+		ul li {
+			border-bottom: 1px solid #000;
+			padding: 10px 30px 10px 0px;
+		}
+		ul li:last-child {
+			border: none;
+			margin-bottom: 20px;
+		}
+		.remove {
+			float: right;
+		}
+		#new {
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul id="list">
+		</ul>
+		<input type="text" name="new" id="new" placeholder="New label" />
+		<button onclick="add()" class="add">Add</button>
+	</div>
+</body>
+<script type="text/javascript">
+	function createList(){
+		var cookies=decodeURIComponent(document.cookie) || document.cookie;
+		var cookiearr=cookies.split(';');
+		for(i=0; i<cookiearr.length; i++)
+		{
+			if(cookiearr[i]!="")
+			{
+				var ul = document.getElementById("list");
+				ul.innerHTML+=
+				"<li id=\"li"+cookiearr[i].split('=')[0]+"\">"+
+				"<input type=\"checkbox\" />"+
+				"<label>"+cookiearr[i].split('=')[1]+"</label>"+
+				"<button class=\"remove\" id=\"b"+cookiearr[i].split('=')[0]+"\" onclick=\"remove(this.id)\">Remove</button>";
+			}
+		}
+	}
+	var cookies=decodeURIComponent(document.cookie);
+	var cookiearr=cookies.split(';');
+	function setCookie(cname,cvalue,exdays) {
+	    var d = new Date();
+	    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	    var expires = "expires=" + d.toUTCString();
+	    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+	function add() {
+		var cookies=decodeURIComponent(document.cookie);
+		var cookiearr=cookies.split(';');
+		var counter=0;
+		if(cookiearr.length>0)
+		{
+			counter=Number(cookiearr[cookiearr.length-1].split('=')[0]);
+			counter++;
+		}
+		else
+			counter=0;
+		var text = document.getElementById("new").value;
+		var ul = document.getElementById("list");
+		ul.innerHTML+=
+		"<li id=\"li"+counter+"\">"+
+		"<input type=\"checkbox\" />"+
+		"<label>"+text+"</label>"+
+		"<button class=\"remove\" id=\"b"+counter+"\" onclick=\"remove(this.id)\">Remove</button>";
+		setCookie(String(counter), text, 300);
+	}
+	function remove(id) {
+		id=id.substring(1);
+		var li = document.getElementById("li"+id);
+		li.remove();
+		removeCookie(id);
+	}
+	function removeCookie(id) {
+		var cookies=decodeURIComponent(document.cookie) || document.cookie;
+		var cookiearr=cookies.split(';');
+		setCookie(id, "", 0);
+	}
+	createList();
+</script>
+</html>
