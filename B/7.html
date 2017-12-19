@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>B7</title>
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		#map {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<img  id="map" src="map.jpg" />
+	<script type="text/javascript">
+		var map = document.getElementById('map');
+		var down=false;
+		var elOffset=[0,0];
+		var cursorPos=[0,0];
+		map.addEventListener("mousedown", mousedownFunc);
+		map.addEventListener("mouseup", mouseupFunc);
+		map.addEventListener("mousemove", mousemoveFunc);
+		
+		function mousedownFunc(e) {
+			down=true;
+			elOffset=[
+				map.offsetLeft - e.clientX,
+				map.offsetTop - e.clientY
+			];
+		}
+		function mouseupFunc() {
+			down=false;
+		}
+		function mousemoveFunc(e) {
+			if(down)
+			{
+				cursorPos=[
+					e.clientX,
+					e.clientY
+				];
+				styleLeft=elOffset[0] + cursorPos[0];
+				styleTop=elOffset[1] + cursorPos[1];
+				if(styleTop>0)
+					styleTop=0;
+				if(styleTop<-(map.clientHeight-document.documentElement.clientHeight))
+					styleTop=-(map.clientHeight-document.documentElement.clientHeight);
+				if(styleLeft>0)
+					styleLeft=0;
+				if(styleLeft<-(map.clientWidth-document.documentElement.clientWidth))
+					styleLeft=-(map.clientWidth-document.documentElement.clientWidth);
+				map.style.left =  styleLeft+ 'px';
+				map.style.top = styleTop + 'px';
+			}
+		}
+// (map.offsetTop<=0 && map.offsetTop>=-(map.clientHeight-document.documentElement.clientHeight)) && (map.offsetLeft<=0 && map.offsetLeft>=-(map.clientWidth-document.documentElement.clientWidth))
+	</script>
+</body>
+</html>
