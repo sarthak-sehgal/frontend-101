@@ -41,6 +41,7 @@
 		}
 		function mousemoveFunc(e) {
 			e.preventDefault();
+			map.ondragstart = function() { return false; };
 			if(down)
 			{
 				cursorPos=[
