@@ -36,14 +36,18 @@
 		}
 		function mouseupFunc() {
 			down=false;
+			console.log("hey!");
+			map.style.cursor='default';
 		}
 		function mousemoveFunc(e) {
+			e.preventDefault();
 			if(down)
 			{
 				cursorPos=[
 					e.clientX,
 					e.clientY
 				];
+				map.style.cursor='pointer';
 				styleLeft=elOffset[0] + cursorPos[0];
 				styleTop=elOffset[1] + cursorPos[1];
 				if(styleTop>0)
