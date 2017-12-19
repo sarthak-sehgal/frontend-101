@@ -24,8 +24,11 @@
 		var elOffset=[0,0];
 		var cursorPos=[0,0];
 		map.addEventListener("mousedown", mousedownFunc);
+		map.addEventListener("touchstart", mousedownFunc);
 		map.addEventListener("mouseup", mouseupFunc);
+		map.addEventListener("touchend", mouseupFunc);
 		map.addEventListener("mousemove", mousemoveFunc);
+		map.addEventListener("touchmove", mousemoveFunc);
 		
 		function mousedownFunc(e) {
 			down=true;
@@ -36,7 +39,6 @@
 		}
 		function mouseupFunc() {
 			down=false;
-			console.log("hey!");
 			map.style.cursor='default';
 		}
 		function mousemoveFunc(e) {
