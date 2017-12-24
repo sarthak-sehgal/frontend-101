@@ -48,12 +48,10 @@
 		}
 		function mouseupFunc() {
 			down=false;
-			map.style.cursor='default';
 		}
-		function touchendFunc() {
-			down=false;
-			map.style.cursor='default';
+		function touchendFunc(e) {
 			e.preventDefault();
+			down=false;
 		}
 		function mousemoveFunc(e) {
 			e.preventDefault();
@@ -89,10 +87,8 @@
 					e.changedTouches[0].clientX,
 					e.changedTouches[0].clientY
 				];
-				map.style.changedTouches[0].cursor='pointer';
 				styleLeft=elOffset[0] + cursorPos[0];
 				styleTop=elOffset[1] + cursorPos[1];
-				console.changedTouches[0].log(e);
 				if(styleTop>0)
 					styleTop=0;
 				if(styleTop<-(map.clientHeight-document.documentElement.clientHeight))
@@ -101,8 +97,8 @@
 					styleLeft=0;
 				if(styleLeft<-(map.clientWidth-document.documentElement.clientWidth))
 					styleLeft=-(map.clientWidth-document.documentElement.clientWidth);
-				map.style.changedTouches[0].left =  styleLeft+ 'px';
-				map.style.changedTouches[0].top = styleTop + 'px';
+				map.style.left =  styleLeft+ 'px';
+				map.style.top = styleTop + 'px';
 			}
 		}
 // (map.offsetTop<=0 && map.offsetTop>=-(map.clientHeight-document.documentElement.clientHeight)) && (map.offsetLeft<=0 && map.offsetLeft>=-(map.clientWidth-document.documentElement.clientWidth))
