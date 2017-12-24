@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>B7</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<style type="text/css">
 		html, body {
 			margin: 0;
@@ -24,11 +25,11 @@
 		var elOffset=[0,0];
 		var cursorPos=[0,0];
 		map.addEventListener("mousedown", mousedownFunc);
-		map.addEventListener("touchstart", mousedownFunc);
+		map.addEventListener("touchstart", touchstartFunc);
 		map.addEventListener("mouseup", mouseupFunc);
-		map.addEventListener("touchend", mouseupFunc);
+		map.addEventListener("touchend", touchendFunc);
 		map.addEventListener("mousemove", mousemoveFunc);
-		map.addEventListener("touchmove", mousemoveFunc);
+		map.addEventListener("touchmove", touchmoveFunc);
 		
 		function mousedownFunc(e) {
 			down=true;
@@ -37,9 +38,22 @@
 				map.offsetTop - e.clientY
 			];
 		}
+		function touchstartFunc(e) {
+			down=true;
+			elOffset=[
+				map.offsetLeft - e.changedTouches[0].clientX,
+				map.offsetTop - e.changedTouches[0].clientY
+			];
+			e.preventDefault();
+		}
 		function mouseupFunc() {
 			down=false;
 			map.style.cursor='default';
+		}
+		function touchendFunc() {
+			down=false;
+			map.style.cursor='default';
+			e.preventDefault();
 		}
 		function mousemoveFunc(e) {
 			e.preventDefault();
@@ -53,6 +67,7 @@
 				map.style.cursor='pointer';
 				styleLeft=elOffset[0] + cursorPos[0];
 				styleTop=elOffset[1] + cursorPos[1];
+				console.log(e);
 				if(styleTop>0)
 					styleTop=0;
 				if(styleTop<-(map.clientHeight-document.documentElement.clientHeight))
@@ -63,6 +78,31 @@
 					styleLeft=-(map.clientWidth-document.documentElement.clientWidth);
 				map.style.left =  styleLeft+ 'px';
 				map.style.top = styleTop + 'px';
+			}
+		}
+		function touchmoveFunc(e) {
+			e.preventDefault();
+			map.ondragstart = function() { return false; };
+			if(down)
+			{
+				cursorPos=[
+					e.changedTouches[0].clientX,
+					e.changedTouches[0].clientY
+				];
+				map.style.changedTouches[0].cursor='pointer';
+				styleLeft=elOffset[0] + cursorPos[0];
+				styleTop=elOffset[1] + cursorPos[1];
+				console.changedTouches[0].log(e);
+				if(styleTop>0)
+					styleTop=0;
+				if(styleTop<-(map.clientHeight-document.documentElement.clientHeight))
+					styleTop=-(map.clientHeight-document.documentElement.clientHeight);
+				if(styleLeft>0)
+					styleLeft=0;
+				if(styleLeft<-(map.clientWidth-document.documentElement.clientWidth))
+					styleLeft=-(map.clientWidth-document.documentElement.clientWidth);
+				map.style.changedTouches[0].left =  styleLeft+ 'px';
+				map.style.changedTouches[0].top = styleTop + 'px';
 			}
 		}
 // (map.offsetTop<=0 && map.offsetTop>=-(map.clientHeight-document.documentElement.clientHeight)) && (map.offsetLeft<=0 && map.offsetLeft>=-(map.clientWidth-document.documentElement.clientWidth))
