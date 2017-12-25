@@ -13,7 +13,7 @@
 		#map {
 			position: absolute;
 			top: 0;
-			left: 0;
+			transform-origin: 0 0;
 		}
 	</style>
 </head>
@@ -24,13 +24,18 @@
 		var down=false;
 		var elOffset=[0,0];
 		var cursorPos=[0,0];
+		// pan events
 		map.addEventListener("mousedown", mousedownFunc);
 		map.addEventListener("touchstart", touchstartFunc);
 		map.addEventListener("mouseup", mouseupFunc);
 		map.addEventListener("touchend", touchendFunc);
 		map.addEventListener("mousemove", mousemoveFunc);
 		map.addEventListener("touchmove", touchmoveFunc);
-		
+
+		// zoom events
+		var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"; //FF doesn't recognize mousewheel as of FF3.x
+		map.addEventListener(mousewheelevt, mousewheelFunc);
+
 		function mousedownFunc(e) {
 			down=true;
 			elOffset=[
@@ -48,6 +53,7 @@
 		}
 		function mouseupFunc() {
 			down=false;
+			map.style.cursor='default';
 		}
 		function touchendFunc(e) {
 			e.preventDefault();
@@ -65,7 +71,6 @@
 				map.style.cursor='pointer';
 				styleLeft=elOffset[0] + cursorPos[0];
 				styleTop=elOffset[1] + cursorPos[1];
-				console.log(e);
 				if(styleTop>0)
 					styleTop=0;
 				if(styleTop<-(map.clientHeight-document.documentElement.clientHeight))
@@ -100,6 +105,23 @@
 				map.style.left =  styleLeft+ 'px';
 				map.style.top = styleTop + 'px';
 			}
+		}
+		var scale=1.0;
+		function mousewheelFunc(e) {
+			var delta = e.detail ? e.detail*(-1) : e.wheelDelta/120;
+			if(delta>0 && scale<=1.9)
+			{
+				scale+=delta/100;
+			}
+			if(delta<0 && scale>1)
+			{
+				scale+=delta/100;
+			}
+			map.style.transformOrigin=(e.clientX-map.offsetLeft) + "px " + (e.clientY-map.offsetTop) + "px 0px";
+			// map.style.left=(e.clientX-e.pageX)+"px";
+			// map.style.top=(e.clientY-map.offsetTop)+"px";
+			// console.log(e.clientX + " " + e.pageX + " " + map.offsetLeft);
+			map.style.transform="scale("+scale+")";
 		}
 // (map.offsetTop<=0 && map.offsetTop>=-(map.clientHeight-document.documentElement.clientHeight)) && (map.offsetLeft<=0 && map.offsetLeft>=-(map.clientWidth-document.documentElement.clientWidth))
 	</script>
