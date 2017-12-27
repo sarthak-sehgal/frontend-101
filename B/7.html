@@ -12,6 +12,7 @@
 		}
 		#map {
 			position: absolute;
+			left: 0;
 			top: 0;
 			transform-origin: 0 0;
 		}
@@ -118,12 +119,16 @@
 				scale+=delta/100;
 			}
 			map.style.transformOrigin=(e.clientX-map.offsetLeft) + "px " + (e.clientY-map.offsetTop) + "px 0px";
-			// map.style.left=(e.clientX-e.pageX)+"px";
-			// map.style.top=(e.clientY-map.offsetTop)+"px";
-			// console.log(e.clientX + " " + e.pageX + " " + map.offsetLeft);
 			map.style.transform="scale("+scale+")";
+			if(!map.style.left || map.style.left=="0px")
+				left=0;
+			else
+			{
+				left=(map.style.left).match(/\d/g);
+				left = -parseInt(left.join(""));
+			}
+			console.log(left);
 		}
-// (map.offsetTop<=0 && map.offsetTop>=-(map.clientHeight-document.documentElement.clientHeight)) && (map.offsetLeft<=0 && map.offsetLeft>=-(map.clientWidth-document.documentElement.clientWidth))
 	</script>
 </body>
 </html>
