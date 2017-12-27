@@ -25,6 +25,7 @@
 		var down=false;
 		var elOffset=[0,0];
 		var cursorPos=[0,0];
+		var dist;
 		// pan events
 		map.addEventListener("mousedown", mousedownFunc);
 		map.addEventListener("touchstart", touchstartFunc);
@@ -44,7 +45,13 @@
 				map.offsetTop - e.clientY
 			];
 		}
+		var zoom=false;
 		function touchstartFunc(e) {
+			if(e.touches.length==2)
+			{
+				zoom=true;
+				dist =(e.touches[0].x-e.touches[1].x) * (e.touches[0].x-e.touches[1].x) + (e.touches[0].y-e.touches[1].y) * (e.touches[0].y-e.touches[1].y);
+			}
 			down=true;
 			elOffset=[
 				map.offsetLeft - e.changedTouches[0].clientX,
@@ -84,9 +91,31 @@
 				map.style.top = styleTop + 'px';
 			}
 		}
+		var tchscale=1.0;
 		function touchmoveFunc(e) {
 			e.preventDefault();
 			map.ondragstart = function() { return false; };
+			if(zoom)
+			{
+				new_dist=(e.touches[0].x-e.touches[1].x) * (e.touches[0].x-e.touches[1].x) + (e.touches[0].y-e.touches[1].y) * (e.touches[0].y-e.touches[1].y);
+				if(new_dist!=dist)
+				{
+					down=false;
+					if(new_dist>dist)
+					{
+						alert(new_dist-dist);
+					}
+					else
+					{
+						alert(new_dist-dist);
+					}
+					map.style.transformOrigin=Math.abs((e.touches[0].x-e.touches[1].x)/2) + "px " + Math.abs((e.touches[0].y-e.touches[1].y)/2) + "px 0px";
+					map.style.transform="scale("+tchscale+")";
+					if(e.touches.length==1)
+						down=true;
+				}
+				dist=new_dist;
+			}
 			if(down)
 			{
 				cursorPos=[
@@ -127,8 +156,8 @@
 				left=(map.style.left).match(/\d/g);
 				left = -parseInt(left.join(""));
 			}
-			console.log(left);
 		}
+		
 	</script>
 </body>
 </html>
