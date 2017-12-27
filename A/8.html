@@ -16,60 +16,188 @@
 		}
 		img {
 			position: absolute;
-			height: 576px;
-			width: 750px;
-			/*z-index: 999;*/
+			height: calc(384px+384px);
+			width: calc(500px+500px);
+			z-index: 999;
 		}
 		div {
 			position: absolute;
 			height: 576px;
 			width: 750px;
+			clip: rect(62.5px, 528px, 687.5px, 48px);
 		}
-		.e1 {
-			background: #2C27A1;
+		.e1, .e6, .e9 {
+			background: #1446A0;
+			transition: all 0.46s 0.28s cubic-bezier(0.7, 0.3, 0, 1), background-color 0.46s 0.08s;
+		}
+		.e2, .e10, .e12 {
+			background: #C70028;
+			transition: all 0.46s 0.28s cubic-bezier(0.7, 0.3, 0, 1), background-color 0.46s 0.08s;
+		}
+		.e3, .e7, .e11 {
+			background: #F5D547;
+			transition: all 0.46s 0.28s cubic-bezier(0.7, 0.3, 0, 1), background-color 0.46s 0.08s;
+		}
+		.e4, .e8, .e14 {
+			background: #161925;
+			transition: all 0.46s 0.28s cubic-bezier(0.7, 0.3, 0, 1), background-color 0.46s 0.08s;
+		}
+		.e5, .e13 {
+			background: #EFF6EE;
+			transition: all 0.46s 0.28s cubic-bezier(0.7, 0.3, 0, 1), background-color 0.46s 0.08s;
+		}
+		#box.D .e1 {
 			clip-path: polygon(38.13% 25.52%, 44.67% 25.52%, 42.93% 50.00%);
 		}
-		.e2 {
-			background: #C70028;
+		#box.D .e2 {
 			clip-path: polygon(44.27% 30.38%, 49.60% 25.52%, 44.67% 25.52%);
+		}
+		#box.D .e3 {
+			clip-path: polygon(44.27% 30.38%, 49.60% 25.52%, 60.00% 37.67%);
+		}
+		#box.D .e4 {
+			clip-path: polygon(49.60% 25.52%, 60.00% 37.76%, 56.80% 28.91%);
+		}
+		#box.D .e5 {
+			clip-path: polygon(54.80% 35.42%, 62.20% 50.00%, 60.00% 37.76%);
+		}
+		#box.D .e6 {
+			clip-path: polygon(54.80% 35.42%, 58.00% 50.00%, 62.20% 50.00%);
+		}
+		#box.D .e7 {
+			clip-path: polygon(58.00% 50.00%, 62.20% 50.00%, 54.80% 63.54%)
+		}
+		#box.D .e8 {
+			clip-path: polygon(54.80% 63.54%, 60.00% 61.20%, 62.20% 50.26%)
+		}
+		#box.D .e9 {
+			clip-path: polygon(49.60% 72.40%, 60.00% 61.20%, 44.20% 67.97%);
+		}
+		#box.D .e10 {
+			clip-path: polygon(49.60% 72.40%, 56.80% 69.53%, 60.00% 61.20%);
+		}
+		#box.D .e11 {
+			clip-path: polygon(49.60% 72.40%, 44.40% 72.66%, 44.20% 67.97%);
+		}
+		#box.D .e12 {
+			clip-path: polygon(42.80% 50.00%, 44.40% 72.40%, 38.00% 72.40%);
+		}
+		#box.D .e13 {
+			clip-path: polygon(38.00% 72.40%, 42.80% 50.00%, 39.20% 50.00%);
+		}
+		#box.D .e14 {
+			clip-path: polygon(43.00% 49.74%, 39.20% 50.00%, 38.20% 25.52%);
+		}
+		#box.V .e14 {
+			clip-path: polygon(42.80% 30.47%, 40.80% 21.09%, 36.00% 21.09%);
+		}
+		#box.V .e7 {
+			clip-path: polygon(42.80% 30.21%, 39.00% 33.59%, 36.00% 21.09%);
+		}
+		#box.V .e2 {
+			clip-path: polygon(42.00% 49.22%, 42.60% 30.47%, 39.00% 33.85%);
+		}
+		#box.V .e6 {
+			clip-path: polygon(42.00% 49.22%, 45.80% 47.66%, 42.80% 30.47%);
+		}
+		#box.V .e11 {
+			clip-path: polygon(50.00% 66.67%, 45.80% 47.92%, 42.20% 49.48%);
+		}
+		#box.V .e8 {
+			clip-path: polygon(47.20% 71.61%, 50.00% 66.67%, 42.00% 49.22%);
+		}
+		#box.V .e1 {
+			clip-path: polygon(50.00% 82.29%, 50.00% 66.67%, 47.20% 71.61%);
+		}
+		#box.V .e12 {
+			clip-path: polygon(50.00% 82.55%, 53.00% 71.61%, 50.00% 66.41%)
+		}
+		#box.V .e5 {
+			clip-path: polygon(53.00% 71.61%, 50.00% 66.41%, 58.00% 49.22%);
+		}
+		#box.V .e9 {
+			clip-path: polygon(50.20% 66.41%, 58.00% 49.22%, 54.20% 47.66%);
+		}
+		#box.V .e3 {
+			clip-path: polygon(58.00% 49.22%, 54.20% 47.66%, 57.40% 30.73%);
+		}
+		#box.V .e4 {
+			clip-path: polygon(58.00% 49.22%, 61.20% 33.85%, 57.40% 30.47%);
+		}
+		#box.V .e10 {
+			clip-path: polygon(57.40% 30.47%, 64.20% 21.09%, 59.40% 21.09%);
+		}
+		#box.V .e13 {
+			clip-path: polygon(57.40% 30.47%, 61.20% 33.59%, 64.20% 21.35%);
 		}
 	</style>
 </head>
 <body>
-	<!-- <img src="D.svg" />
-	<div class="e1"></div>
-	<div class="e2"></div>
-	<div class="e3"></div>
-	<div class="e4"></div>
-	<div class="e5"></div>
-	<div class="e6"></div>
-	<div class="e7"></div>
-	<div class="e8"></div>
-	<div class="e9"></div>
-	<div class="e10"></div>
-	<div class="e11"></div>
-	<div class="e12"></div>
-	<div class="e13"></div>
-	<div class="e14"></div> -->
+	<p style="position: absolute;top: 0;text-align: center;">
+		Use arrow keys.<br>
+		Only D, V made due to shortage of time.
+	</p>
+	<div id="box">
+		<div class="e1"></div>
+		<div class="e2"></div>
+		<div class="e3"></div>
+		<div class="e4"></div>
+		<div class="e5"></div>
+		<div class="e6"></div>
+		<div class="e7"></div>
+		<div class="e8"></div>
+		<div class="e9"></div>
+		<div class="e10"></div>
+		<div class="e11"></div>
+		<div class="e12"></div>
+		<div class="e13"></div>
+		<div class="e14"></div>
+	</div>
 	<script type="text/javascript">
-		document.addEventListener("mouseup", mouseupFunc);
-		var img = document.getElementsByTagName('img')[0];
-		var arr = new Array();
-		var i=1;
-		function mouseupFunc(e)
-		{
-			var x=(e.clientX-img.offsetLeft)*100/img.width;
-			var y=(e.clientY-img.offsetTop)*100/img.height;
-			x=Number(x).toFixed(2);
-			y=Number(y).toFixed(2);
-			arr.push(x);
-			arr.push(y);
-			if(i%3==0)
+		// Script for tracing polygons (triangles here) from svg
+			document.addEventListener("mouseup", mouseupFunc);
+			var img = document.getElementsByTagName('img')[0];
+			var arr = new Array();
+			var i=1;
+			function mouseupFunc(e)
 			{
-				alert("clip-path: polygon("+arr[0]+"% "+arr[1]+"%, "+arr[2]+"% "+arr[3]+"%, "+arr[4]+"% "+arr[5]+"%)");
-				arr.splice(0,6);
+				var x=(e.clientX-img.offsetLeft)*100/img.width;
+				var y=(e.clientY-img.offsetTop)*100/img.height;
+				x=Number(x).toFixed(2);
+				y=Number(y).toFixed(2);
+				arr.push(x);
+				arr.push(y);
+				if(i%3==0)
+				{
+					alert("clip-path: polygon("+arr[0]+"% "+arr[1]+"%, "+arr[2]+"% "+arr[3]+"%, "+arr[4]+"% "+arr[5]+"%)");
+					arr.splice(0,6);
+				}
+				i++;
 			}
-			i++;
+		// End script
+
+		document.addEventListener("keydown", keydownFunc);
+		var box = document.getElementById("box");
+		var i=0;
+		box.classList="D";
+		function keydownFunc(e)
+		{
+			if(e.keyCode==39)
+			{
+				i=i%2+1;
+			}
+			if(e.keyCode==37)
+			{
+				i=i%2-1;
+			}
+			if(i%2==0)
+			{
+				box.classList="D";
+			}
+			else
+			{
+				box.classList="V";
+			}
 		}
 	</script>
 </body>
