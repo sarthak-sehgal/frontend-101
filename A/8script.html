@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A8 SVG tracing Script</title>
+</head>
+<body>
+<svg width="1366" height="768" xmlns="http://www.w3.org/2000/svg">
+ <title>M</title>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <polygon id="svg_1" points="683.166015625,292.0010070800781 638.9990234375,232.5 683.166015625,362.9110107421875 " fill="#161925"/>
+  <polygon id="svg_2" points="520.4990234375,354.89300537109375 575.4990234375,553.5 520.4990234375,608.2860107421875 " fill="#BA1F33"/>
+  <polygon id="svg_3" points="575.4990234375,269.5 520.4990234375,125.40499877929688 638.9990234375,232.5 " fill="#EFF6EE"/>
+  <polygon id="svg_4" points="520.4990234375,125.40499877929688 520.4990234375,354.89300537109375 575.4990234375,269.5 " fill="#1446A0"/>
+  <polygon id="svg_5" points="575.4990234375,269.5 520.4990234375,354.89300537109375 574.9219970703125,399.5 " fill="#F5D547"/>
+  <polygon id="svg_6" points="575.4990234375,553.5 520.4990234375,354.89300537109375 575.4990234375,399.5 " fill="#161925"/>
+  <polygon id="svg_7" points="575.4990234375,269.5 638.9990234375,232.5 683.166015625,362.9110107421875 " fill="#BA1F33"/>
+  <polygon id="svg_8" points="682.833984375,362.9110107421875 727.0009765625,232.5 682.833984375,292.0010070800781 " fill="#F5D547"/>
+  <polygon id="svg_9" points="845.5009765625,608.2860107421875 790.5009765625,553.5 845.5009765625,354.89300537109375 " fill="#1446A0"/>
+  <polygon id="svg_10" points="727.0009765625,232.5 845.5009765625,125.40499877929688 790.5009765625,269.5 " fill="#BA1F33"/>
+  <polygon id="svg_11" points="790.5009765625,269.5 845.5009765625,354.89300537109375 845.5009765625,125.40499877929688 " fill="#EFF6EE"/>
+  <polygon id="svg_12" points="791.0780029296875,399.5 845.5009765625,354.89300537109375 790.5009765625,269.5 " fill="#161925"/>
+  <polygon id="svg_13" points="790.5009765625,399.5 845.5009765625,354.89300537109375 790.5009765625,553.5 " fill="#F5D547"/>
+  <polygon id="svg_14" points="682.833984375,362.9110107421875 727.0009765625,232.5 790.5009765625,269.5 " fill="#1446A0"/>
+ </g>
+</svg>
+<script type="text/javascript">
+  // var polygons = document.getElementsByTagName('polygon');
+  // var percents = new Array();
+  // for(i=0; i<polygons.length; i++)
+  // {
+  //   var points = polygons[i].getAttribute('points');
+  //   var coordarr = points.split(" ");
+  //   for(k=0; k<coordarr.length; k++)
+  //   {
+  //     var coords = coordarr[k].split(',');
+  //     for(l=0; l<coords.length; l++)
+  //       percents.push(coords[l]);
+  //   }
+  // }
+    polygons = document.getElementsByTagName('polygon');
+    for(i=0; i<polygons.length; i++)
+    {
+      var x = (polygons[i].getAttribute('id'));
+      polygons[i].onclick = getPoints(i);
+    }
+  function getPoints(i)
+  {
+    var percents=new Array();
+    var height = document.getElementsByTagName('svg')[0].getAttribute('height');
+    var width = document.getElementsByTagName('svg')[0].getAttribute('width');
+    var polygon = document.getElementsByTagName('polygon');
+    var points = polygon[i].getAttribute('points');
+    var fill = polygon[i].getAttribute('fill');
+    var coordarr = points.split(" ");
+    for(k=0; k<coordarr.length; k++)
+    {
+      var coords = coordarr[k].split(',');
+      // var coords = coordarr[k];
+      percents.push((parseFloat(coords[0]*100/Number(width)).toFixed(2)).toString()+"% ");
+      percents.push((parseFloat(coords[1]*100/Number(height)).toFixed(2)).toString()+"%, ");
+    }
+    i++;
+    document.body.innerHTML+=("#box.M .e"+i+"{ clip-path: polygon("+percents[0]+percents[1]+percents[2]+percents[3]+percents[4]+percents[5]+"); background-color: "+fill+";}<br>");
+  }
+</script>
+</body>
+</html>
