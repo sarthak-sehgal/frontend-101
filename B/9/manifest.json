@@ -9,8 +9,13 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "content_scripts" : [
+   {
+     "js": ["popup.js"],
+     "matches": ["https://bits-oasis.org/*", "https://bits-apogee.org/*", "https://bits-bosm.org/*"]
+   }
+  ],
   "permissions": [
-   "activeTab",
-   "tabs"
+   "activeTab", "tabs", "https://bits-oasis.org/*", "https://bits-apogee.org/*", "https://bits-bosm.org/*"
    ]
 }
