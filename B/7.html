@@ -15,17 +15,25 @@
 			left: 0;
 			top: 0;
 			transform-origin: 0 0;
+			background-image: url('map.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			height: 2553px;
+			width: 3963px;
 		}
 	</style>
 </head>
 <body>
-	<img  id="map" src="map.jpg" />
+	<div id="map"></div>
 	<script type="text/javascript">
 		var map = document.getElementById('map');
+		var mapHeight=2553;
+		var mapWidth=1963;
 		var down=false;
 		var elOffset=[0,0];
 		var cursorPos=[0,0];
 		var dist;
+		var newdist;
 		// pan events
 		map.addEventListener("mousedown", mousedownFunc);
 		map.addEventListener("touchstart", touchstartFunc);
@@ -45,19 +53,19 @@
 				map.offsetTop - e.clientY
 			];
 		}
-		var zoom=false;
 		function touchstartFunc(e) {
 			if(e.touches.length==2)
 			{
-				zoom=true;
-				dist =(e.touches[0].x-e.touches[1].x) * (e.touches[0].x-e.touches[1].x) + (e.touches[0].y-e.touches[1].y) * (e.touches[0].y-e.touches[1].y);
-				alert(dist);
+				dist =((e.touches[0].pageX-e.touches[1].pageX)**2 + (e.touches[0].pageY-e.touches[1].pageY)**2)**0.5;
 			}
-			down=true;
-			elOffset=[
-				map.offsetLeft - e.changedTouches[0].clientX,
-				map.offsetTop - e.changedTouches[0].clientY
-			];
+			if(e.touches.length==1)
+			{
+				down=true;
+				elOffset=[
+					map.offsetLeft - e.changedTouches[0].clientX,
+					map.offsetTop - e.changedTouches[0].clientY
+				];
+			}	
 			e.preventDefault();
 		}
 		function mouseupFunc() {
@@ -92,32 +100,39 @@
 				map.style.top = styleTop + 'px';
 			}
 		}
-		var tchscale=1.0;
+		var scale=1.0;
 		function touchmoveFunc(e) {
 			e.preventDefault();
+			
 			map.ondragstart = function() { return false; };
-			if(zoom)
+			if(e.touches.length==2)
 			{
-				new_dist=(e.touches[0].x-e.touches[1].x) * (e.touches[0].x-e.touches[1].x) + (e.touches[0].y-e.touches[1].y) * (e.touches[0].y-e.touches[1].y);
-				if(new_dist!=dist)
+				newdist =((e.touches[0].pageX-e.touches[1].pageX)**2 + (e.touches[0].pageY-e.touches[1].pageY)**2)**0.5;
+				map.style.transformOrigin=(-map.getBoundingClientRect().left + (e.touches[0].pageX+e.touches[1].pageX)/2) + "px " + (-map.getBoundingClientRect().top + (e.touches[0].pageY+e.touches[1].pageY)/2) + "px 0px";
+				delta=(newdist-dist)/dist;
+				delta=delta/40;
+				newHeight=map.getBoundingClientRect().height;
+				newWidth=map.getBoundingClientRect().width;
+				if(delta>0 && newHeight<mapHeight*4)
 				{
-					down=false;
-					if(new_dist>dist)
-					{
-						alert(new_dist-dist);
-					}
-					else
-					{
-						alert(new_dist-dist);
-					}
-					map.style.transformOrigin=Math.abs((e.touches[0].x-e.touches[1].x)/2) + "px " + Math.abs((e.touches[0].y-e.touches[1].y)/2) + "px 0px";
-					map.style.transform="scale("+tchscale+")";
-					if(e.touches.length==1)
-						down=true;
+					map.style.transform = "scale("+(1+delta)+")";
+					map.style.top = map.getBoundingClientRect().top+"px";
+					map.style.left = map.getBoundingClientRect().left+"px";
+					map.style.height = map.getBoundingClientRect().height+"px";
+					map.style.width = map.getBoundingClientRect().width+"px";
+					map.style.transform = "scale("+1.00+")";
 				}
-				dist=new_dist;
+				if(delta<0 && newHeight>mapHeight)
+				{
+					map.style.transform = "scale("+(1+delta)+")";
+					map.style.top = map.getBoundingClientRect().top+"px";
+					map.style.left = map.getBoundingClientRect().left+"px";
+					map.style.height = map.getBoundingClientRect().height+"px";
+					map.style.width = map.getBoundingClientRect().width+"px";
+					map.style.transform = "scale("+1.00+")";
+				}
 			}
-			if(down)
+			if(down && e.touches.length==1)
 			{
 				cursorPos=[
 					e.changedTouches[0].clientX,
@@ -137,19 +152,32 @@
 				map.style.top = styleTop + 'px';
 			}
 		}
-		var scale=1.0;
 		function mousewheelFunc(e) {
 			var delta = e.detail ? e.detail*(-1) : e.wheelDelta/120;
-			if(delta>0 && scale<=1.9)
+			newHeight=map.getBoundingClientRect().height;
+			newWidth=map.getBoundingClientRect().width;
+			if(delta>0 && newHeight<mapHeight*4)
+			{
+				scale+=delta/100;	
+				map.style.transform = "scale("+1.05+")";
+				map.style.transformOrigin=(e.clientX-map.offsetLeft) + "px " + (e.clientY-map.offsetTop) + "px 0px";
+				map.style.top = map.getBoundingClientRect().top+"px";
+				map.style.left = map.getBoundingClientRect().left+"px";
+				map.style.height = map.getBoundingClientRect().height+"px";
+				map.style.width = map.getBoundingClientRect().width+"px";
+				map.style.transform = "scale("+1.00+")";
+			}
+			if(delta<0 && newHeight>mapHeight)
 			{
 				scale+=delta/100;
+				map.style.transform = "scale("+0.95+")";
+				map.style.transformOrigin=(e.clientX-map.offsetLeft) + "px " + (e.clientY-map.offsetTop) + "px 0px";
+				map.style.top = map.getBoundingClientRect().top+"px";
+				map.style.left = map.getBoundingClientRect().left+"px";
+				map.style.height = map.getBoundingClientRect().height+"px";
+				map.style.width = map.getBoundingClientRect().width+"px";
+				map.style.transform = "scale("+1.00+")";
 			}
-			if(delta<0 && scale>1)
-			{
-				scale+=delta/100;
-			}
-			map.style.transformOrigin=(e.clientX-map.offsetLeft) + "px " + (e.clientY-map.offsetTop) + "px 0px";
-			map.style.transform="scale("+scale+")";
 			if(!map.style.left || map.style.left=="0px")
 				left=0;
 			else
@@ -157,6 +185,7 @@
 				left=(map.style.left).match(/\d/g);
 				left = -parseInt(left.join(""));
 			}
+			
 		}
 		
 	</script>
