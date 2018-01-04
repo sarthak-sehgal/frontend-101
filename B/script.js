@@ -165,7 +165,7 @@ function start()
 						grid[j][row]=0;
 			}
 			if(loop_ran==99)
-				setTimeout(createTile, 400);
+				createTile();
 			else
 				checkGameOver();
 			// for(var i=0; i<4; i++)
@@ -254,7 +254,7 @@ function start()
 						grid[j][row]=0;
 			}
 			if(loop_ran==99)
-				setTimeout(createTile, 400);
+				createTile();
 			else
 				checkGameOver();
 	}
@@ -334,7 +334,7 @@ function start()
 						grid[col][j]=0;
 			}
 			if(loop_ran==99)
-				setTimeout(createTile, 400);
+				createTile();
 			else
 				checkGameOver();
 	}
@@ -414,7 +414,7 @@ function start()
 						grid[col][j]=0;
 			}
 			if(loop_ran==99)
-				setTimeout(createTile, 400);
+				createTile();
 			else
 				checkGameOver();
 	}
